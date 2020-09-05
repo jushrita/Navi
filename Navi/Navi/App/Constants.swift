@@ -8,3 +8,10 @@
 
 import Foundation
 
+enum BaseError: Error {
+    case generic
+    case jsonParsingError
+}
+
+let creationDateFormat = "h:mm a 'on' MMMM dd, yyyy"
+let utcDateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"

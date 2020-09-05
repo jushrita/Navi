@@ -8,6 +8,6 @@
 
 import Foundation
 
-class URL {
-    static let prURL = "https://api.github.com/repos/jushrita/Navi/pulls"
-}
+let prURL = "https://api.github.com/repos/jushrita/Navi/pulls"
+
+

@@ -18,21 +18,49 @@ class PRListViewController: UIViewController {
         }
     }
     
+    var presenter: PRListPresenter?
+    var currentState = PRListViewState()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "PR List"
+        setupPresenter()
+    }
+    
+    func setupPresenter() {
+        presenter = PRListPresenter(view: self)
+        presenter?.getClosedPRs()
+    }
+    
+    func setupView() {
+        tableView.reloadData()
     }
 }
 
 extension PRListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return currentState.prListData?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       guard let cell = tableView.dequeueReusableCell(withIdentifier: PRCell.className, for: indexPath) as? PRCell else {
-           return UITableViewCell()
-       }
-       return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PRCell.className, for: indexPath) as? PRCell else {
+            return UITableViewCell()
+        }
+        guard let prData = currentState.prListData?[indexPath.row] else {
+            return UITableViewCell()
+        }
+        cell.configure(data: prData)
+        return cell
+    }
+}
+
+extension PRListViewController: PRListView {
+    func renderView(state: PRListViewState) {
+        currentState = state
+        setupView()
+    }
+    
+    func getCurrentState() -> PRListViewState {
+        return currentState
     }
 }
