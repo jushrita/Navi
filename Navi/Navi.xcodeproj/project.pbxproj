@@ -15,6 +15,7 @@
 		85D076E2250357CE001F8641 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85D076E0250357CE001F8641 /* LaunchScreen.storyboard */; };
 		85D076ED250357CE001F8641 /* NaviTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D076EC250357CE001F8641 /* NaviTests.swift */; };
 		85D076F8250357CE001F8641 /* NaviUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D076F7250357CE001F8641 /* NaviUITests.swift */; };
+		85D0770825035D2C001F8641 /* PRListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D0770725035D2C001F8641 /* PRListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		85D076F3250357CE001F8641 /* NaviUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NaviUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		85D076F7250357CE001F8641 /* NaviUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviUITests.swift; sourceTree = "<group>"; };
 		85D076F9250357CE001F8641 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85D0770725035D2C001F8641 /* PRListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		85D076D4250357CC001F8641 /* Navi */ = {
 			isa = PBXGroup;
 			children = (
+				85D0770525035CFB001F8641 /* View */,
 				85D076D5250357CC001F8641 /* AppDelegate.swift */,
 				85D076D7250357CC001F8641 /* SceneDelegate.swift */,
 				85D076D9250357CC001F8641 /* ViewController.swift */,
@@ -126,6 +129,22 @@
 				85D076F9250357CE001F8641 /* Info.plist */,
 			);
 			path = NaviUITests;
+			sourceTree = "<group>";
+		};
+		85D0770525035CFB001F8641 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				85D0770625035D0D001F8641 /* ViewController */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		85D0770625035D0D001F8641 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				85D0770725035D2C001F8641 /* PRListViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +280,7 @@
 			files = (
 				85D076DA250357CC001F8641 /* ViewController.swift in Sources */,
 				85D076D6250357CC001F8641 /* AppDelegate.swift in Sources */,
+				85D0770825035D2C001F8641 /* PRListViewController.swift in Sources */,
 				85D076D8250357CC001F8641 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
