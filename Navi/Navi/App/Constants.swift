@@ -1,5 +1,5 @@
 //
-//  PRListPresenter.swift
+//  Constants.swift
 //  Navi
 //
 //  Created by Jushrita on 05/09/20.
@@ -8,6 +8,3 @@
 
 import Foundation
 
-class PRListPresenter {
-    
-}

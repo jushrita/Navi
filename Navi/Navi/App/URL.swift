@@ -1,5 +1,5 @@
 //
-//  PRListPresenter.swift
+//  URL.swift
 //  Navi
 //
 //  Created by Jushrita on 05/09/20.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-class PRListPresenter {
-    
+class URL {
+    static let prURL = "https://api.github.com/repos/jushrita/Navi/pulls"
 }

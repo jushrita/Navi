@@ -1,5 +1,5 @@
 //
-//  PRListPresenter.swift
+//  PRRequestModel.swift
 //  Navi
 //
 //  Created by Jushrita on 05/09/20.
@@ -8,6 +8,10 @@
 
 import Foundation
 
-class PRListPresenter {
-    
+enum PRState: String {
+    case all, closed, open
+}
+
+struct PRRequestModel {
+    var state: PRState
 }
