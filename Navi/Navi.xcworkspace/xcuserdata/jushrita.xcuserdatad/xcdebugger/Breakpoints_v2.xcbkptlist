@@ -7,32 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3AAF7241-A89D-4FF6-87EB-BCEE3283D775"
+            uuid = "91132E7F-0D84-4818-84B5-06EF80B51825"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Navi/PRList/Presenter/PRListPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "utcToLocal(dateStr:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "AED2479F-B9FC-4AFC-A1ED-70E0061E8A09"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Navi/PRList/Presenter/PRListPresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "utcToLocal(dateStr:)"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "getClosedPRRequest(pageNumber:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

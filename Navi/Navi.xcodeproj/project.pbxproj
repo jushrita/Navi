@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		1596E457D5D9BC069DE48480 /* Pods_Navi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E29EB163B1B24981EFE14B /* Pods_Navi.framework */; };
 		31476529D91005978D66292A /* Pods_NaviTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3EAB1024204B5F6382A4BEC /* Pods_NaviTests.framework */; };
+		857A68152504AB180049E395 /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A68142504AB180049E395 /* DateUtility.swift */; };
 		85896A232503A0BB0000BC3F /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85896A222503A0BB0000BC3F /* UIView+Extension.swift */; };
 		85896A252503B9800000BC3F /* PRResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85896A242503B9800000BC3F /* PRResponseModel.swift */; };
 		85896A272503BBB50000BC3F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85896A262503BBB50000BC3F /* Constants.swift */; };
-		85896A292503BBDA0000BC3F /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85896A282503BBDA0000BC3F /* URL.swift */; };
+		85896A292503BBDA0000BC3F /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85896A282503BBDA0000BC3F /* EndPoint.swift */; };
 		85896A2B2503BC680000BC3F /* PRRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85896A2A2503BC680000BC3F /* PRRequestModel.swift */; };
 		85D076D6250357CC001F8641 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D076D5250357CC001F8641 /* AppDelegate.swift */; };
 		85D076D8250357CC001F8641 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D076D7250357CC001F8641 /* SceneDelegate.swift */; };
@@ -51,10 +52,11 @@
 		129B41E0A4A15F7BE9BBD177 /* Pods-Navi-NaviUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navi-NaviUITests.release.xcconfig"; path = "Target Support Files/Pods-Navi-NaviUITests/Pods-Navi-NaviUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2D2D49058A797B4AADBD279A /* Pods-Navi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navi.debug.xcconfig"; path = "Target Support Files/Pods-Navi/Pods-Navi.debug.xcconfig"; sourceTree = "<group>"; };
 		5B3AEFF4DE5E6549F655963C /* Pods-Navi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navi.release.xcconfig"; path = "Target Support Files/Pods-Navi/Pods-Navi.release.xcconfig"; sourceTree = "<group>"; };
+		857A68142504AB180049E395 /* DateUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
 		85896A222503A0BB0000BC3F /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		85896A242503B9800000BC3F /* PRResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRResponseModel.swift; sourceTree = "<group>"; };
 		85896A262503BBB50000BC3F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		85896A282503BBDA0000BC3F /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		85896A282503BBDA0000BC3F /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		85896A2A2503BC680000BC3F /* PRRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRRequestModel.swift; sourceTree = "<group>"; };
 		85D076D2250357CC001F8641 /* Navi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85D076D5250357CC001F8641 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -241,7 +243,8 @@
 			children = (
 				85F80E5A250399A600A8B890 /* AppDelegate */,
 				85896A262503BBB50000BC3F /* Constants.swift */,
-				85896A282503BBDA0000BC3F /* URL.swift */,
+				85896A282503BBDA0000BC3F /* EndPoint.swift */,
+				857A68142504AB180049E395 /* DateUtility.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -512,11 +515,12 @@
 				85896A252503B9800000BC3F /* PRResponseModel.swift in Sources */,
 				85D0770825035D2C001F8641 /* PRListViewController.swift in Sources */,
 				85F80E502503991700A8B890 /* PRCell.swift in Sources */,
-				85896A292503BBDA0000BC3F /* URL.swift in Sources */,
+				85896A292503BBDA0000BC3F /* EndPoint.swift in Sources */,
 				85896A2B2503BC680000BC3F /* PRRequestModel.swift in Sources */,
 				85896A232503A0BB0000BC3F /* UIView+Extension.swift in Sources */,
 				85F80E572503996D00A8B890 /* PRListNetworkService.swift in Sources */,
 				85D076D8250357CC001F8641 /* SceneDelegate.swift in Sources */,
+				857A68152504AB180049E395 /* DateUtility.swift in Sources */,
 				85896A272503BBB50000BC3F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

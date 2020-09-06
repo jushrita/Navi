@@ -14,4 +14,6 @@ enum PRState: String {
 
 struct PRRequestModel {
     var state: PRState
+    var pageNumber: Int
+    var pageSize: Int
 }

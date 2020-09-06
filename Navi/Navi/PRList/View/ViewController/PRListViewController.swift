@@ -29,7 +29,7 @@ class PRListViewController: UIViewController {
     
     func setupPresenter() {
         presenter = PRListPresenter(view: self)
-        presenter?.getClosedPRs()
+        presenter?.getPRs(forPageNumber: presenter?.currentPageNumber)
     }
     
     func setupView() {

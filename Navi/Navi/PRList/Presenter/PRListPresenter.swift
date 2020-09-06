@@ -27,19 +27,21 @@ struct PRListViewState {
 
 class PRListPresenter {
     weak var view: PRListView?
+    let pageSize = 10
+    var currentPageNumber = 1
     
     init(view: PRListView) {
         self.view = view
     }
     
-    func getPRs() {
+    func getPRs(forPageNumber: Int?) {
         DispatchQueue.global().async { [weak self] in
-            self?.getClosedPRs()
+            self?.getClosedPRs(forPageNumber: forPageNumber ?? 1)
         }
     }
     
-    func getClosedPRs() {
-        let newtworkService = PRListNetworkService(requestParams: getClosedPRRequest())
+    func getClosedPRs(forPageNumber: Int) {
+        let newtworkService = PRListNetworkService(requestParams: getClosedPRRequest(pageNumber: forPageNumber))
         newtworkService.getPRList { [weak self] (response) in
             if let error = response.error {
                 //TODO:- Error Handling
@@ -65,25 +67,12 @@ class PRListPresenter {
     }
     
     func getPRData(data: PRResponseModel) -> PRData {
-        let prData = PRData(imageName: "", title: data.title ?? "", userName: data.user?.login ?? "", firstDate: utcToLocal(dateStr: data.created_at ?? "") ?? "", secondDate: utcToLocal(dateStr: data.closed_at ?? "") ?? "")
+        let prData = PRData(imageName: "", title: data.title ?? "", userName: data.user?.login ?? "", firstDate: "Created at: \(DateUtility.utcToLocal(dateStr: data.created_at ?? "") ?? "")", secondDate: "Closed at: \(DateUtility.utcToLocal(dateStr: data.closed_at ?? "") ?? "")")
         return prData
     }
     
-    func getClosedPRRequest() -> PRRequestModel {
-        let request = PRRequestModel(state: PRState.closed)
+    func getClosedPRRequest(pageNumber: Int) -> PRRequestModel {
+        let request = PRRequestModel(state: PRState.closed, pageNumber: pageNumber, pageSize: pageSize)
         return request
-    }
-    
-    func utcToLocal(dateStr: String) -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = utcDateFormat
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        
-        if let date = dateFormatter.date(from: dateStr) {
-            dateFormatter.timeZone = TimeZone.current
-            dateFormatter.dateFormat = creationDateFormat
-            return dateFormatter.string(from: date)
-        }
-        return nil
     }
 }

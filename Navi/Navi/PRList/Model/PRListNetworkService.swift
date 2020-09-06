@@ -18,8 +18,7 @@ class PRListNetworkService {
     }
     
     func getPRList(completionHandler: @escaping (PRListResponse) -> ()) {
-        let params = ["state": requestParams.state.rawValue]
-        AF.request(prURL, method: .get, parameters: params).responseJSON { response in
+        AF.request(prURL, method: .get, parameters: getParams()).responseJSON { response in
             guard let data = response.data else {
                 completionHandler((response: nil, error: .generic))
                 return
@@ -31,5 +30,13 @@ class PRListNetworkService {
                 completionHandler((response: nil, error: .jsonParsingError))
             }
         }
+    }
+    
+    func getParams() -> [String: Any] {
+        var params = [String: Any]()
+        params["state"] = requestParams.state.rawValue
+        params["page"] = requestParams.pageNumber
+        params["per_page"] = requestParams.pageSize
+        return params
     }
 }
