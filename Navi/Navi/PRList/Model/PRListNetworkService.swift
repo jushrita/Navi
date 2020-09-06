@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 typealias PRListResponse = (response: [PRResponseModel]?, error: BaseError?)
 
@@ -18,18 +17,20 @@ class PRListNetworkService {
     }
     
     func getPRList(completionHandler: @escaping (PRListResponse) -> ()) {
-        AF.request(prURL, method: .get, parameters: getParams()).responseJSON { response in
+        NetworkService().makeAPICall(url: prURL, prams: getParams(), completionHandler: { response in
             guard let data = response.data else {
                 completionHandler((response: nil, error: .generic))
                 return
             }
             do {
-                let prData = try JSONDecoder().decode([PRResponseModel].self, from: data)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let prData = try decoder.decode([PRResponseModel].self, from: data)
                 completionHandler((response: prData, error: nil))
             } catch {
                 completionHandler((response: nil, error: .jsonParsingError))
             }
-        }
+        })
     }
     
     func getParams() -> [String: Any] {

@@ -14,6 +14,7 @@ class PRCell: UITableViewCell {
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var creationData: UILabel!
     @IBOutlet weak var closeDate: UILabel!
+    @IBOutlet weak var avatarImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,6 +29,7 @@ class PRCell: UITableViewCell {
         userName.text = data.userName
         creationData.text = data.firstDate
         closeDate.text = data.secondDate
+        avatarImage.imageFromURL(url: data.imageURL)
     }
     
 }

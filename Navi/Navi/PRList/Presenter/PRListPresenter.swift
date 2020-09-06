@@ -14,15 +14,16 @@ protocol PRListView: class {
 }
 
 struct PRData {
-    var imageName: String
+    var id: Int
     var title: String
     var userName: String
     var firstDate: String
     var secondDate: String
+    var imageURL: String
 }
 
 struct PRListViewState {
-    var prListData: [PRData]?
+    var prListData: [PRData] = [PRData]()
 }
 
 class PRListPresenter {
@@ -43,7 +44,7 @@ class PRListPresenter {
     func getClosedPRs(forPageNumber: Int) {
         let newtworkService = PRListNetworkService(requestParams: getClosedPRRequest(pageNumber: forPageNumber))
         newtworkService.getPRList { [weak self] (response) in
-            if let error = response.error {
+            if response.error != nil {
                 //TODO:- Error Handling
             } else {
                 if let prDataList = response.response {
@@ -56,10 +57,11 @@ class PRListPresenter {
     func process(prDataList: [PRResponseModel]) {
         var prList = [PRData]()
         for pr in prDataList {
-            prList.append(getPRData(data: pr))
+            let prData = getPRData(data: pr)
+            prList.append(prData)
         }
         if var currentState = view?.getCurrentState() {
-            currentState.prListData = prList
+            currentState.prListData.append(contentsOf: prList)
             DispatchQueue.main.async { [weak self] in
                 self?.view?.renderView(state: currentState)
             }
@@ -67,7 +69,7 @@ class PRListPresenter {
     }
     
     func getPRData(data: PRResponseModel) -> PRData {
-        let prData = PRData(imageName: "", title: data.title ?? "", userName: data.user?.login ?? "", firstDate: "Created at: \(DateUtility.utcToLocal(dateStr: data.created_at ?? "") ?? "")", secondDate: "Closed at: \(DateUtility.utcToLocal(dateStr: data.closed_at ?? "") ?? "")")
+        let prData = PRData(id: data.id ?? -1, title: data.title ?? "", userName: data.user?.login ?? "", firstDate: "Created at: \(DateUtility.utcToLocal(dateStr: data.createdAt ?? "") ?? "")", secondDate: "Closed at: \(DateUtility.utcToLocal(dateStr: data.closedAt ?? "") ?? "")", imageURL: data.user?.avatarUrl ?? "")
         return prData
     }
     
@@ -76,10 +78,27 @@ class PRListPresenter {
         return request
     }
     
-    func reachedScreenEnd(indexPathRow: Int) {
-        if indexPathRow == currentPageNumber * pageSize - 3 {
+    func checkReachedScreenEnd(indexPathRow: Int) {
+        if indexPathRow == currentPageNumber * pageSize - 1 {
             currentPageNumber = currentPageNumber + 1
             getPRs(forPageNumber: currentPageNumber)
         }
     }
+    
+//    func getAvatarImage(id: Int, url: String) {
+//        AvatarNetworkService(url: url).getAvatr { [weak self](response) in
+//            guard var currentState = self?.view?.getCurrentState() else {
+//                return
+//            }
+//            var prDataList = currentState.prListData
+//            let index = prDataList.firstIndex(where: { $0.id == id })
+//            var newData = prDataList[index ?? 0]
+//            newData.imageData = response.response
+//            prDataList[index ?? 0] = newData
+//            currentState.prListData = prDataList
+//            DispatchQueue.main.async { [weak self] in
+//                self?.view?.renderView(state: currentState)
+//            }
+//        }
+//    }
 }

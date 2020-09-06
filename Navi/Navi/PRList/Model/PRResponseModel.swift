@@ -11,12 +11,13 @@ import Foundation
 struct PRResponseModel: Decodable {
     var id: Int?
     var title: String?
-    var created_at: String?
-    var closed_at: String?
+    var createdAt: String?
+    var closedAt: String?
     var merged_at: String?
     var user: User?
 }
 
 struct User: Decodable {
     var login: String?
+    var avatarUrl: String?
 }

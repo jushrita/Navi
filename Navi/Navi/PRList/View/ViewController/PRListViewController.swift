@@ -39,22 +39,20 @@ class PRListViewController: UIViewController {
 
 extension PRListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentState.prListData?.count ?? 0
+        return currentState.prListData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PRCell.className, for: indexPath) as? PRCell else {
             return UITableViewCell()
         }
-        guard let prData = currentState.prListData?[indexPath.row] else {
-            return UITableViewCell()
-        }
+        let prData = currentState.prListData[indexPath.row]
         cell.configure(data: prData)
         return cell
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        presenter?.reachedScreenEnd(indexPathRow: indexPath.row)
+        presenter?.checkReachedScreenEnd(indexPathRow: indexPath.row)
     }
 }
 
