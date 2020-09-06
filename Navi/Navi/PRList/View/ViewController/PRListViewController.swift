@@ -52,6 +52,10 @@ extension PRListViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configure(data: prData)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        presenter?.reachedScreenEnd(indexPathRow: indexPath.row)
+    }
 }
 
 extension PRListViewController: PRListView {

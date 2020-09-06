@@ -75,4 +75,11 @@ class PRListPresenter {
         let request = PRRequestModel(state: PRState.closed, pageNumber: pageNumber, pageSize: pageSize)
         return request
     }
+    
+    func reachedScreenEnd(indexPathRow: Int) {
+        if indexPathRow == currentPageNumber * pageSize - 3 {
+            currentPageNumber = currentPageNumber + 1
+            getPRs(forPageNumber: currentPageNumber)
+        }
+    }
 }
